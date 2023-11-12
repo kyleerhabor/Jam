@@ -11,6 +11,11 @@
 		00E037902B003ADB00B9E958 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E0378F2B003ADB00B9E958 /* ContentView.swift */; };
 		00E037922B003ADE00B9E958 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00E037912B003ADE00B9E958 /* Assets.xcassets */; };
 		00E037952B003ADE00B9E958 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00E037942B003ADE00B9E958 /* Preview Assets.xcassets */; };
+		00E037B02B003CD700B9E958 /* MediaRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E037A92B003C2C00B9E958 /* MediaRemote.framework */; };
+		00E037B72B004EE400B9E958 /* PrivateMediaRemote in Frameworks */ = {isa = PBXBuildFile; productRef = 00E037B62B004EE400B9E958 /* PrivateMediaRemote */; };
+		00E037BA2B00544300B9E958 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 00E037B92B00544300B9E958 /* KeyboardShortcuts */; };
+		00E037BD2B005D9E00B9E958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E037BC2B005D9E00B9E958 /* AppDelegate.swift */; };
+		00E037BF2B0068F000B9E958 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 00E037BE2B0068F000B9E958 /* LICENSE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +25,10 @@
 		00E037912B003ADE00B9E958 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		00E037942B003ADE00B9E958 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		00E037962B003ADE00B9E958 /* Jam.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Jam.entitlements; sourceTree = "<group>"; };
+		00E037A92B003C2C00B9E958 /* MediaRemote.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaRemote.framework; path = ../../../../System/Library/PrivateFrameworks/MediaRemote.framework; sourceTree = "<group>"; };
+		00E037BB2B005BF300B9E958 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		00E037BC2B005D9E00B9E958 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		00E037BE2B0068F000B9E958 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +36,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00E037B02B003CD700B9E958 /* MediaRemote.framework in Frameworks */,
+				00E037B72B004EE400B9E958 /* PrivateMediaRemote in Frameworks */,
+				00E037BA2B00544300B9E958 /* KeyboardShortcuts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,8 +48,11 @@
 		00E037812B003ADB00B9E958 = {
 			isa = PBXGroup;
 			children = (
+				00E037BB2B005BF300B9E958 /* README.md */,
+				00E037BE2B0068F000B9E958 /* LICENSE */,
 				00E0378C2B003ADB00B9E958 /* Jam */,
 				00E0378B2B003ADB00B9E958 /* Products */,
+				00E037A82B003C2C00B9E958 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +69,7 @@
 			children = (
 				00E0378D2B003ADB00B9E958 /* JamApp.swift */,
 				00E0378F2B003ADB00B9E958 /* ContentView.swift */,
+				00E037BC2B005D9E00B9E958 /* AppDelegate.swift */,
 				00E037912B003ADE00B9E958 /* Assets.xcassets */,
 				00E037962B003ADE00B9E958 /* Jam.entitlements */,
 				00E037932B003ADE00B9E958 /* Preview Content */,
@@ -67,6 +83,14 @@
 				00E037942B003ADE00B9E958 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		00E037A82B003C2C00B9E958 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				00E037A92B003C2C00B9E958 /* MediaRemote.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +109,10 @@
 			dependencies = (
 			);
 			name = Jam;
+			packageProductDependencies = (
+				00E037B62B004EE400B9E958 /* PrivateMediaRemote */,
+				00E037B92B00544300B9E958 /* KeyboardShortcuts */,
+			);
 			productName = Jam;
 			productReference = 00E0378A2B003ADB00B9E958 /* Jam.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +141,10 @@
 				Base,
 			);
 			mainGroup = 00E037812B003ADB00B9E958;
+			packageReferences = (
+				00E037B32B004EE400B9E958 /* XCRemoteSwiftPackageReference "MediaRemote" */,
+				00E037B82B00544300B9E958 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+			);
 			productRefGroup = 00E0378B2B003ADB00B9E958 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,6 +159,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00E037BF2B0068F000B9E958 /* LICENSE in Resources */,
 				00E037952B003ADE00B9E958 /* Preview Assets.xcassets in Resources */,
 				00E037922B003ADE00B9E958 /* Assets.xcassets in Resources */,
 			);
@@ -139,6 +172,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00E037BD2B005D9E00B9E958 /* AppDelegate.swift in Sources */,
 				00E037902B003ADB00B9E958 /* ContentView.swift in Sources */,
 				00E0378E2B003ADB00B9E958 /* JamApp.swift in Sources */,
 			);
@@ -279,6 +313,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -289,6 +325,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Debug;
 		};
@@ -306,6 +346,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -316,6 +358,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Release;
 		};
@@ -341,6 +387,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		00E037B32B004EE400B9E958 /* XCRemoteSwiftPackageReference "MediaRemote" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/PrivateFrameworks/MediaRemote";
+			requirement = {
+				branch = "request-now-playing-playback-queue-for-player";
+				kind = branch;
+			};
+		};
+		00E037B82B00544300B9E958 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.15.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		00E037B62B004EE400B9E958 /* PrivateMediaRemote */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00E037B32B004EE400B9E958 /* XCRemoteSwiftPackageReference "MediaRemote" */;
+			productName = PrivateMediaRemote;
+		};
+		00E037B92B00544300B9E958 /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00E037B82B00544300B9E958 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 00E037822B003ADB00B9E958 /* Project object */;
 }

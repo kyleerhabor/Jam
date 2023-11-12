@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "keyboardshortcuts",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sindresorhus/KeyboardShortcuts",
+      "state" : {
+        "revision" : "ac302e21da5883f4bd0490cbd0cb710b08740500",
+        "version" : "1.15.0"
+      }
+    },
+    {
+      "identity" : "mediaremote",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/PrivateFrameworks/MediaRemote",
+      "state" : {
+        "branch" : "request-now-playing-playback-queue-for-player",
+        "revision" : "d231c7a875232ea73e8dba2eb05a8041fd3d6e45"
+      }
+    },
+    {
+      "identity" : "protocolbuffer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/PrivateFrameworks/ProtocolBuffer",
+      "state" : {
+        "revision" : "d4c569d9ce5e146e9185ebc056fdbaaf9784ec5d",
+        "version" : "0.1.1"
+      }
+    }
+  ],
+  "version" : 2
+}

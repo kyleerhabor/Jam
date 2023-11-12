@@ -9,9 +9,17 @@ import SwiftUI
 
 @main
 struct JamApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+  @NSApplicationDelegateAdaptor(AppDelegate.self) private var delegate
+
+  private let width: CGFloat = 256
+  private let height: CGFloat = 160
+
+  var body: some Scene {
+    WindowGroup {
+      ContentView()
+        .frame(minWidth: width, minHeight: height)
     }
+    .windowResizability(.contentMinSize)
+    .defaultSize(width: width, height: height)
+  }
 }
