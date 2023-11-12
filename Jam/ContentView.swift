@@ -10,10 +10,6 @@ import OSLog
 import PrivateMediaRemote
 import SwiftUI
 
-extension Bundle {
-  static let identifier = Bundle.main.bundleIdentifier!
-}
-
 extension KeyboardShortcuts.Name {
   static let forward = Self("forward")
   static let back = Self("back")
@@ -40,23 +36,31 @@ struct ContentView: View {
         self.seek = Int(seekLimit.clamp(seek))
       }
 
-      Stepper("Seek by:", value: seek, in: 1...Double(Int.max), step: 1, format: .number)
+      Stepper("Seek by:", value: seek, in: seekLimit, step: 1, format: .number)
     }.onAppear {
       KeyboardShortcuts.onKeyDown(for: .forward) {
         Task {
-          MRMediaRemoteSetElapsedTime(try await elapsed() + Double(seek))
+          guard let elapsed = try await elapsed() else {
+            return
+          }
+
+          MRMediaRemoteSetElapsedTime(elapsed + Double(seek))
         }
       }
 
       KeyboardShortcuts.onKeyDown(for: .back) {
         Task {
-          MRMediaRemoteSetElapsedTime(try await elapsed() - Double(seek))
+          guard let elapsed = try await elapsed() else {
+            return
+          }
+
+          MRMediaRemoteSetElapsedTime(elapsed - Double(seek))
         }
       }
     }
   }
 
-  func elapsed() async throws -> Double {
+  func elapsed() async throws -> Double? {
     try await withCheckedThrowingContinuation { continuation in
       MRMediaRemoteRequestNowPlayingPlaybackQueueForPlayerSync(nil, nil, .global()) { queue, err in
         if let err {
@@ -68,6 +72,8 @@ struct ContentView: View {
         let queue = queue as! MRPlaybackQueue
 
         guard let metadata = queue.contentItems.first?.metadata else {
+          continuation.resume(returning: nil)
+
           return
         }
 
