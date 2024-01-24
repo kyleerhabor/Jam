@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0074FBA52B60AAC70010F51A /* Standard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0074FBA42B60AAC70010F51A /* Standard.swift */; };
 		00E0378E2B003ADB00B9E958 /* JamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E0378D2B003ADB00B9E958 /* JamApp.swift */; };
 		00E037902B003ADB00B9E958 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E0378F2B003ADB00B9E958 /* ContentView.swift */; };
 		00E037922B003ADE00B9E958 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00E037912B003ADE00B9E958 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0074FBA42B60AAC70010F51A /* Standard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Standard.swift; sourceTree = "<group>"; };
 		00E0378A2B003ADB00B9E958 /* Jam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E0378D2B003ADB00B9E958 /* JamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JamApp.swift; sourceTree = "<group>"; };
 		00E0378F2B003ADB00B9E958 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				00E0378D2B003ADB00B9E958 /* JamApp.swift */,
 				00E0378F2B003ADB00B9E958 /* ContentView.swift */,
 				00E037BC2B005D9E00B9E958 /* AppDelegate.swift */,
+				0074FBA42B60AAC70010F51A /* Standard.swift */,
 				00E037912B003ADE00B9E958 /* Assets.xcassets */,
 				00E037962B003ADE00B9E958 /* Jam.entitlements */,
 				00E037932B003ADE00B9E958 /* Preview Content */,
@@ -174,6 +177,7 @@
 			files = (
 				00E037BD2B005D9E00B9E958 /* AppDelegate.swift in Sources */,
 				00E037902B003ADB00B9E958 /* ContentView.swift in Sources */,
+				0074FBA52B60AAC70010F51A /* Standard.swift in Sources */,
 				00E0378E2B003ADB00B9E958 /* JamApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,7 +238,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.1;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -291,7 +295,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.1;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -320,6 +324,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyleerhabor.Jam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -353,6 +358,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyleerhabor.Jam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
