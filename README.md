@@ -16,9 +16,9 @@ Jam is an application that allows you to control media, except with a subset of 
 
 > [!IMPORTANT]
 >
-> As of macOS Sequoia 15.5 (24F74), this app
->
 > As of Jam 1.1, the app is no longer app-agnostic due to macOS Sequoia 15.5 revoking that behavior.
+>
+> Jam supports [Doppler](https://brushedtype.co/doppler).
 
 ## Installation
 
