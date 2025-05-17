@@ -6,7 +6,6 @@
 //
 
 import KeyboardShortcuts
-import PrivateMediaRemote
 import SwiftUI
 
 struct StorageKey<Value> {

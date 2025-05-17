@@ -6,7 +6,6 @@
 //
 
 import KeyboardShortcuts
-import PrivateMediaRemote
 import OSLog
 import SwiftUI
 
