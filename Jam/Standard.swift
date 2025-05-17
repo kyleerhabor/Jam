@@ -9,16 +9,8 @@ import Foundation
 import KeyboardShortcuts
 import OSLog
 
-extension Bundle {
-  static let identifier = Bundle.main.bundleIdentifier!
-}
-
 extension Logger {
   static let standard = Self()
-}
-
-extension DispatchQueue {
-  static let mediaremote = DispatchQueue(label: "\(Bundle.identifier).MediaRemote", qos: .userInitiated)
 }
 
 extension ClosedRange {

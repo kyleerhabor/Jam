@@ -16,6 +16,7 @@ struct JamApp: App {
 
   private let width: CGFloat = 256
   private let height: CGFloat = 160
+  private static let dopplerPlayerPosition = NSAppleScript(source: "tell application \"Doppler\" to return player position")
 
   var body: some Scene {
     WindowGroup {
@@ -39,56 +40,53 @@ struct JamApp: App {
 
     Task {
       let positions = stream.compactMap { action -> Double? in
-        let elapsed: Double
-
-        do {
-          guard let position = try await Self.elapsed() else {
-            return nil
-          }
-
-          elapsed = position
-        } catch {
-          Logger.standard.error("Could not get elapsed time: \(error)")
-
+        guard UserDefaults.standard.integer(forKey: StorageKeys.application.name) == Application.doppler.rawValue,
+              let position = await Self.position() else {
           return nil
         }
 
-        let seek = UserDefaults.standard.double(forKey: UserDefaults.seekKey)
+        let seekRate = UserDefaults.standard.double(forKey: StorageKeys.seekRate.name)
 
         switch action {
-          case .back: return elapsed - seek
-          case .forward: return elapsed + seek
+          case .back: return position - seekRate
+          case .forward: return position + seekRate
           default: return nil
         }
       }
 
       for await position in positions {
-        MRMediaRemoteSetElapsedTime(position)
+        await Self.setPosition(to: position)
       }
     }
   }
 
-  static func elapsed() async throws -> Double? {
-    try await withCheckedThrowingContinuation { continuation in
-      MRMediaRemoteRequestNowPlayingPlaybackQueueForPlayerSync(nil, nil, .mediaremote) { queue, err in
-        if let err {
-          continuation.resume(throwing: err)
+  static func position() async -> Double? {
+    guard let appleScript = dopplerPlayerPosition else {
+      return nil
+    }
 
-          return
-        }
+    var errorInfo: NSDictionary?
+    let descriptor = appleScript.executeAndReturnError(&errorInfo)
 
-        let queue = queue as! MRPlaybackQueue
+    if let errorInfo {
+      Logger.standard.error("\(errorInfo)")
 
-        guard let metadata = queue.contentItems.first?.metadata else {
-          continuation.resume(returning: nil)
+      return nil
+    }
 
-          return
-        }
+    return descriptor.doubleValue
+  }
 
-        let elapsed = metadata.calculatedPlaybackPosition
+  static func setPosition(to position: Double) async {
+    guard let appleScript = NSAppleScript(source: "tell application \"Doppler\" to set player position to \(position)") else {
+      return
+    }
 
-        continuation.resume(returning: elapsed)
-      }
+    var errorInfo: NSDictionary?
+    appleScript.executeAndReturnError(&errorInfo)
+
+    if let errorInfo {
+      Logger.standard.error("\(errorInfo)")
     }
   }
 }

@@ -12,7 +12,13 @@ Mac computers provide a number of ways to interact with media:
 Jam is an application that allows you to control media, except with a subset of features:
 - It relies on keyboard shortcuts to control media
 - It seeks forward/back the current media by a configurable duration
-- It's application-agnostic, supporting any app that can broadcast media (music player, browser, chat app, etc.)
+- ~~It's app-agnostic, supporting any app that can broadcast media (music player, browser, chat app, etc.)~~
+
+> [!IMPORTANT]
+>
+> As of macOS Sequoia 15.5 (24F74), this app
+>
+> As of Jam 1.1, the app is no longer app-agnostic due to macOS Sequoia 15.5 revoking that behavior.
 
 ## Installation
 

@@ -9,27 +9,71 @@ import KeyboardShortcuts
 import PrivateMediaRemote
 import SwiftUI
 
-extension UserDefaults {
-  static let seekKey = "seek"
+struct StorageKey<Value> {
+  let name: String
+  let defaultValue: Value
+}
+
+extension StorageKey {
+  init(_ name: String, defaultValue: Value) {
+    self.init(name: name, defaultValue: defaultValue)
+  }
+}
+
+extension StorageKey: Sendable where Value: Sendable {}
+
+extension AppStorage {
+  init(_ key: StorageKey<Value>) where Value == Int {
+    self.init(wrappedValue: key.defaultValue, key.name)
+  }
+
+  init(_ key: StorageKey<Value>) where Value: RawRepresentable,
+                                       Value.RawValue == Int {
+    self.init(wrappedValue: key.defaultValue, key.name)
+  }
+}
+
+
+enum Application: Int {
+  case none, doppler
+}
+
+enum StorageKeys {
+  static let seekRate = StorageKey("seek-rate", defaultValue: 15)
+  static let application = StorageKey("application", defaultValue: Application.none)
 }
 
 struct ContentView: View {
-  @AppStorage(UserDefaults.seekKey) private var seek = 15
-  private let seekLimit = 1...Double(Int.max)
+  @AppStorage(StorageKeys.seekRate) private var seekRate
+  @AppStorage(StorageKeys.application) private var application
+  private let seek = 1...Double(Int.max)
 
   var body: some View {
     Form {
-      KeyboardShortcuts.Recorder("Forward:", name: .forward)
       KeyboardShortcuts.Recorder("Back:", name: .back)
+      KeyboardShortcuts.Recorder("Forward:", name: .forward)
 
-      let seek = Binding {
-        Double(self.seek)
-      } set: { seek in
-        self.seek = Int(seekLimit.clamp(seek))
+      let seekRate = Binding {
+        Double(self.seekRate)
+      } set: { seekRate in
+        self.seekRate = Int(seek.clamp(seekRate))
       }
 
-      Stepper("Seek by:", value: seek, in: seekLimit, step: 1, format: .number)
+      Stepper("Content.SeekRate", value: seekRate, in: seek, step: 1, format: .number)
+
+      Picker("Content.Application", selection: $application) {
+        Section {
+          Text("Content.Application.None")
+            .tag(Application.none)
+        }
+
+        Section {
+          Text("Content.Application.Doppler")
+            .tag(Application.doppler)
+        }
+      }
     }
+    .padding()
   }
 }
 
